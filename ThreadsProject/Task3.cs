@@ -43,7 +43,7 @@ namespace ThreadsProject
                 thread.Start(new int[] {start + segment * i, start + segment * (i + 1), i});
             }
             thread = new Thread(printDiap);
-            thread.Start(new int[] {start + segment * (threadsNum), end, threadsNum - 1});
+            thread.Start(new int[] {start + segment * (threadsNum - 1), end + 1, threadsNum - 1});
         }
         private static void printDiap(object bounds)
         {
