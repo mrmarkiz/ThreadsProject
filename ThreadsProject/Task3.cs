@@ -40,16 +40,19 @@ namespace ThreadsProject
             for (int i = 0; i < threadsNum - 1; i++)
             {
                 thread = new Thread(printDiap);
-                thread.Start(new int[] {start + segment * i, start + segment * (i + 1)});
+                thread.Start(new int[] {start + segment * i, start + segment * (i + 1), i});
             }
             thread = new Thread(printDiap);
-            thread.Start(new int[] {start + segment * (threadsNum), end});
+            thread.Start(new int[] {start + segment * (threadsNum), end, threadsNum - 1});
         }
         private static void printDiap(object bounds)
         {
             int[] boundsConv = (int[])bounds;
-            for (int i = boundsConv[0]; i < boundsConv[1] + 1; i++)
+            int tabsNum = boundsConv[2];
+            for (int i = boundsConv[0]; i < boundsConv[1]; i++)
             {
+                for (int tab = 0; tab < tabsNum; tab++)
+                    Console.Write("\t");
                 Console.WriteLine(i);
             }
         }
