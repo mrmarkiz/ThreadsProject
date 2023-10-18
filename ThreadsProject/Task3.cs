@@ -49,11 +49,10 @@ namespace ThreadsProject
         {
             int[] boundsConv = (int[])bounds;
             int tabsNum = boundsConv[2];
+            string tab = new string('\t', tabsNum);
             for (int i = boundsConv[0]; i < boundsConv[1]; i++)
             {
-                for (int tab = 0; tab < tabsNum; tab++)
-                    Console.Write("\t");
-                Console.WriteLine(i);
+                Console.WriteLine($"{tab}{i}");
             }
         }
     }
